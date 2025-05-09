@@ -23,10 +23,11 @@
             {{ __('Repository') }}
         </x-layout::nav-item>
 
-        <x-layout::nav-item icon="lucide-book-open" href="https://laravel.com/docs" target="_blank">
+        <x-layout::nav-item icon="lucide-book-open" href="https://laravel.com/docs" target="_blank" class="">
             {{ __('Documentation') }}
         </x-layout::nav-item>
     </x-layout::nav-group>
+
 </x-layout::sidebar>
 
 <x-layout::header class="hidden lg:flex items-center px-4 pt-4">
@@ -35,7 +36,16 @@
     </x-layout::sidebar-toggle>
 
     {{ Breadcrumbs::render() }}
+
+    <x-spacer />
+
+    <x-dropdown variant="navigation" position="bottom-right">
+        <x-slot:trigger>
+            {{ auth()->user()->initials() }}
+        </x-slot:trigger>
+    </x-dropdown>
 </x-layout::header>
+
 {{ $slot }}
 
 </body>
